@@ -27,8 +27,8 @@
               <% if block.try(:featured_taxon) %>
                 <% cache spree_base_cache_scope.call(block.featured_taxon) do %>
                   <% if block.featured_taxon.image.attached? && block.featured_taxon.image.variable? %>
-                      <%= image_tag main_app.cdn_image_path(block.featured_taxon.image.variant(spree_image_variant_options(resize_to_fill: [700, 700]))), class: 'w-full h-auto aspect-1', loading: :lazy, alt: block.featured_taxon.name %>
                     <%= link_to spree_storefront_resource_url(block.featured_taxon, relative: true), class: "flex flex-col col-start-4" do %>
+                      <%= image_tag main_app.cdn_image_url(block.featured_taxon.image.variant(spree_image_variant_options(resize_to_fill: [700, 700]))), class: 'w-full h-auto aspect-1', loading: :lazy, alt: block.featured_taxon.name %>
                       <span class="py-3 px-2 bg-accent block uppercase text-sm tracking-widest font-semibold header--mega-nav-featured-taxon-title"><%= Spree.t(:explore_taxon, taxon_name: block.featured_taxon.name) %></span>
                     <% end %>
                   <% end %>
